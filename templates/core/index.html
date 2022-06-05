@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+{% load static %}
+{% load cart_template_tag %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Home</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+  <style>
+  #header .logo {
+    overflow: hidden;
+    padding: 16px 30px 12px 30px;
+    background: orange;
+}
+
+#hero .btn-get-started:hover {
+    background:orange;
+    border:none
+}
+
+#header .header-container {
+    background: #fff;
+}
+ 
+.getstarted-scrollto{
+  background-color:white;
+}
+
+#home,#aboutus,#cart
+{
+  text-decoration:none;
+}
+
+.navbar .getstarted:hover {
+  background-color:black;
+}
+
+.navbar .getstarted {
+    background: orange;
+    padding: 10px 25px;
+    margin-left: 30px;
+    margin-right: 15px;
+    border-radius: 50px;
+    color: #fff;
+}
+
+#hero {
+    width: 100%;
+    height: 80vh;
+    background: url({% static 'img/bg1.jpg' %}) center center;
+    background-size: cover;
+    position: relative;
+}
+
+#hero h1 {
+    margin: 0 0 10px 0;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #fff;
+}
+
+.btn-dark {
+    color: #fff;
+    background-color: orange;
+    border-color: #fff;
+    border-radius: 10px;
+    font-weight:bold;
+}
+
+.card-title {
+    margin-bottom: .1rem;
+}
+
+.back-to-top {
+  background:orange;
+}
+.back-to-top:hover {
+  background:black;
+}
+
+
+#footer .footer-newsletter form input[type="submit"]  {
+    position: absolute;
+    top: 0;
+    right: -2px;
+    bottom: 0;
+    border: 0;
+    background: none;
+    font-size: 16px;
+    padding: 0 20px;
+    background: orange;
+    color: #fff;
+    transition: 0.3s;
+    border-radius: 50px;
+    box-shadow: 0px 2px 15px rgb(0 0 0 / 10%);
+}
+
+
+#footer .footer-newsletter form input[type="submit"] a:hover{
+   background: black;
+}
+
+#footer .social-links a {
+    font-size: 18px;
+    display: inline-block;
+    background: orange;
+    color: #fff;
+    line-height: 1;
+    padding: 8px 0;
+    margin-right: 4px;
+    border-radius: 50%;
+    text-align: center;
+    width: 36px;
+    height: 36px;
+    transition: 0.3s;
+}
+
+#footer .social-links a:hover {
+    display: inline-block;
+    background: black;
+    color: #fff;
+    transition: 0.3s;
+}
+
+#footer .footer-top .footer-links ul i {
+    padding-right: 2px;
+    color: darkorange;
+    font-size: 18px;
+    line-height: 1;
+} 
+
+li#home{
+    display: inline;
+}
+
+.navbar input[type=text] { {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 14px;
+  font-family:"Poppins", sans-serif;
+}
+@media screen and (max-width: 600px) {
+  .navbarinput[type=text] {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+    font-size: 14px;
+  font-family:"Poppins", sans-serif;
+  }
+ .navbar input[type=text] {
+    border: 1px solid #ccc;
+  }
+}
+
+.navar .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+.navbar .search-container button:hover {
+  background: black;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar .search-container {
+    float: none;
+  }
+  .navbar a, .navbar input[type=text], .navbar .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+
+  </style> 
+</head>
+
+<body>
+  
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container">
+      <div class="header-container d-flex align-items-center justify-content-between">
+        <div class="logo">
+          <h1 class="text-light" ><a href="#about"><span>Bikers'</span></a></h1>
+        </div>
+
+        <nav id="navbar" class="navbar">
+          <ul id="horizontal-list">
+           {% if user.is_authenticated %}<!--otherusers-->
+            <li> 
+             <div class="search-container">
+              <form class="d-flex" action="{% url 'search' %}" method='get'>
+                <div class="input-group">
+                 <input name='q' type="text" class="form-control" placeholder="Search..">
+                 <button style="background-color:orange;" class="btn btn-dark " type="submit" id="button-addon2">Search</button>
+               </div>
+              </form>
+              </div>
+            </li>
+            <li style="background-color:white;"><a id="home" class="nav-link scrollto active" href="#hero">Home</a></li>
+            <li style="background-color:white;"><a id="aboutus" class="nav-link scrollto" href="#about">About Us</a></li>
+            <li style="background-color:white;"><a id="aboutus" class="nav-link scrollto " href="#portfolio">Store</a></li>
+            <li style="background-color:white;"><a id="cart" class="nav-link scrollto" href="{% url 'orderlist' %}">Cart&nbsp;&nbsp; 
+               <div style="color:red;"> {{request.user | cart_item_count}} </div>
+            </a></li>
+            
+            {% if user.is_superuser %} <!--i.e admin-->
+            <li style="background-color:white;"><a id="product" class="nav-link scrollto " href="{% url 'add_product' %}">Add Product</a></li>       
+            {% endif %}
+
+            <li style="background-color:white;"><a id="user" class="nav-link scrollto" href="#hero" style="color:tomato;">Welcome {{user.username}}</a></li>
+            <li style="background-color:white;"><a id="logout" class="getstarted scrollto" href="{% url 'user_logout' %}">Logout</a></li>
+
+            {% else %}
+            <li style="background-color:white;"><a id="login" class="getstarted scrollto" href="{% url 'user_login' %}">Login</a></li>
+            <li style="background-color:white;"><a id="register" class="getstarted scrollto" href="{% url 'user_register' %}">Register</a></li>
+          {% endif %}
+
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <!-- ======= End Header ======= -->
+
+
+ <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center" >
+    <div class="container text-center position-relative">
+      <h1>Welcome To The Largest Bikers Portal.</h1>
+      <h1>We are happy you chose us.</h1>
+      <a href="#about" class="btn-get-started scrollto">About Us</a>
+    </div>
+  </section><!-- End Hero -->
+
+
+<!--for product added successfully for superuser-->
+  <main id="main">
+     {% if messages %}
+     {% for message in messages %}
+     <h4 class="login-title" style="color:green; text-align:center;">{{message}}</h4>
+     {% endfor %}
+     {% endif %}
+
+
+  <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="row content">
+          <div class="col-lg-6">
+            <h2> A NEW TYPE OF STOREFRONT! </h2>
+            <h3 style="color: orange;">For the Biker in YOU.</h3>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <p>
+              Welcome to Bikers Portal, your number one source for all things.
+              We're dedicated to giving you the very best of our products.
+              Founded in 2021, Bikers Portal has come a long way from its beginnings.
+              We now serve customers all over place, India, US, London, UK, Asia etc and are thrilled to be a part of the quirky, eco-friendly, fair trade wing of the industry.
+            </p>
+            <ul>
+              <li><i class="ri-check-double-line" style="color:orange;"></i> Dependability </li>
+              <li><i class="ri-check-double-line" style="color:orange;"></i> Customer Service </li>
+              <li><i class="ri-check-double-line" style="color:orange;"></i> Uniqueness </li>
+              <li><i class="ri-check-double-line" style="color:orange;"></i> Top Notch Quality</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section><!-- End About Section--> 
+  
+   <!--Products-->
+   <section id="portfolio" class="portfolio">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-left">
+          <h2>In-Store Items</h2>
+        </div>
+  <!--shows products-->
+  <div class="container-fluid" >
+   <div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for product in products %}
+  <div class="col">
+  <div class="card">
+  
+  <img
+  src="{{product.img.url}}" 
+  class="card-img-top" 
+  alt="..."/>
+  <div class="card-body">
+    <h4 class="card-title"> {{product.name}} </h4>
+  </div>
+    <ul class="list-group list-group-flush">
+     <li class="list-group-item"><b> Category </b> : {{product.category.category_name}} </li>
+     <li class="list-group-item"><b> Price </b> : {{product.price}} </li>
+    </ul>
+    <div class="class-footer" style="background-color:white">
+     <a href="{% url 'product_desc' product.pk %}" class="btn btn-dark"> View More </a>
+    </div>
+  </div>
+ </div>
+ {% endfor %}
+
+ </div>
+ </div>
+ </div>
+ </section>
+ 
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" style="background-color:orange:"></i></a> 
+  
+<!-- Vendor JS Files -->
+  <script src="{% static 'vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'vendor/purecounter/purecounter.js' %}"></script>
+  <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+
+   <!-- ======= Footer ======= -->
+  <footer id="footer">
+   <b>
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Bikers Portal</h3>
+            <p><b>
+              A108, Adam Street, <br>
+              Maharashtra, 401107, <br>
+              India. <br><br></b>
+              <strong>Phone:</strong> 222333110 <br>
+              <strong>Email:</strong> info@gmail.com <br>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'user_login' %}">Login</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'user_register' %}">Register</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'policy' %}">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home Delivery</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">First 3 Services FREE</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">5 years of warrenty on automotives.</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">3 years of warranty on gears.</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Join Our Newsletter</h4>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+            <br>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>2021</span></strong> || All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/ -->
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="https://twitter.com/ChittiB34623900?s=09" class="twitter" target="_blank"><i class="bx bxl-twitter"></i></a>
+        <a href="https://www.facebook.com/chittybabu.udiyar" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.instagram.com/chitty_21_07/?utm_medium=copy_link" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/chitti-babu-9b69b01b5/" class="linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+    </b>
+  </footer><!-- End Footer -->
+</body>
+
+</html>

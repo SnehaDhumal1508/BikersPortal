@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+{% load static %}
+{% load cart_template_tag %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Home</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+<style>
+
+body {
+    background-color: #000
+}
+
+.padding {
+    padding: 2rem !important
+}
+
+.card {
+    margin-bottom: 30px;
+    border: none;
+    -webkit-box-shadow: 0px 1px 2px 1px rgba(154, 154, 204, 0.22);
+    -moz-box-shadow: 0px 1px 2px 1px rgba(154, 154, 204, 0.22);
+    box-shadow: 0px 1px 2px 1px rgba(154, 154, 204, 0.22)
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid #e6e6f2
+}
+
+h3 {
+    font-size: 20px
+}
+
+h5 {
+    font-size: 15px;
+    line-height: 26px;
+    color: #3d405c;
+    margin: 0px 0px 15px 0px;
+    font-family: 'Circular Std Medium'
+}
+
+.text-dark {
+    color: #3d405c !important
+}
+
+</style>
+
+</head>
+<body>
+ <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 padding">
+     <div class="card">
+         <div class="card-header p-4">
+             <a class="pt-2 d-inline-block" href="{% url 'index' %}" data-abc="true">BikerPortal.com</a>
+             <div class="float-right">
+                 <h3 class="mb-0">Invoice Id: {{payment_status.order_id}}</h3>
+                 <h3 class="mb-0">Date: {{order.ordered_date}}</h3>
+             </div>
+         </div>
+         <div class="card-body">
+             <div class="row mb-4">
+                 <div class="col-sm-6">
+                     <h5 class="mb-3">From:</h5>
+                     <h2 class="text-dark mb-1">Bikers Portal</h2>
+                     <div>A108, Adam Street</div>
+                     <div>Maharashtra, 401107, </div>
+                     <div>Email: info@gmail.com</div>
+                     <div>Phone: 222333110</div>
+                 </div>
+                 <div class="col-sm-6 ">
+                     <h5 class="mb-3">To:</h5>
+                     <h2 class="text-dark mb-1">{{order.user.username}}</h2>
+                     <div>{{checkout_address.address}}</div>
+                     <div>{{checkout_address.country}}</div>
+                     <div>{{checkout_address.zip_code}}</div>
+                     <div>{{payment_status.contact}}</div>
+                 </div>
+             </div>
+
+             <div class="table-responsive-sm">
+                 <table class="table table-striped">
+                     <thead>
+                         <tr>
+                             <th>Item</th>
+                             <th class="right">Price</th>
+                             <th class="center">Qty</th>
+                             <th class="right">Total</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                            {% for item in order.items.all %}
+                         <tr class="item">
+                             <td class="left strong">{{item.product.name}}</td>
+                             <td class="right">Rs. {{item.product.price}}</td>
+                             <td class="center">{{item.quantity}}</td>
+                             <td class="right">Rs. {{item.get_total_item_price}}</td>
+                         </tr>
+                              {% endfor %}
+                     </tbody>
+                 </table>
+             </div>
+             <div class="row">
+                 <div class="col-lg-4 col-sm-5">
+                 </div>
+                 <div class="col-lg-4 col-sm-5 ml-auto">
+                     <table class="table table-clear">
+                         <tbody>
+                             <tr>
+                                 <td class="left">
+                                     <strong class="text-dark">Subtotal</strong>
+                                 </td>
+                                 <td class="right">Rs. {{order.get_total_price}}</td>
+                             </tr>
+                         </tbody>
+                     </table>
+                 </div>
+             </div>
+         </div>
+         <div class="card-footer bg-white">
+             <p class="mb-0">BikerPortal.com</p> <br>
+             <p class="mb-0"><a href="{% url 'index' %}">Back to Home Page</a></p> <br>
+         </div>
+     </div>
+ </div>
+
+ <div style="text-align:center;"><button>Print</button></div>
+
+<script>
+  document.querySelector("button").addEventListener("click",function(){
+      window.print()
+  })
+</script>
+</body>
+</html>
+
+                        
+
+                    
+

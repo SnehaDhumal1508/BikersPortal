@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+{% load static %}
+{% load cart_template_tag %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Home</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  
+
+<style>
+
+#hero .btn-get-started:hover {
+    background:orange;
+    border:none
+}
+
+#header .header-container {
+    background: #fff;
+}
+ 
+.getstarted-scrollto{
+  background-color:white;
+}
+
+#home,#aboutus,#cart
+{
+  text-decoration:none;
+}
+
+.navbar .getstarted:hover {
+  background-color:black;
+}
+
+.navbar .getstarted {
+    background: orange;
+    padding: 10px 25px;
+    margin-left: 30px;
+    margin-right: 15px;
+    border-radius: 50px;
+    color: #fff;
+}
+#footer .footer-newsletter form input[type="submit"]  {
+    position: absolute;
+    top: 0;
+    right: -2px;
+    bottom: 0;
+    border: 0;
+    background: none;
+    font-size: 16px;
+    padding: 0 20px;
+    background: orange;
+    color: #fff;
+    transition: 0.3s;
+    border-radius: 50px;
+    box-shadow: 0px 2px 15px rgb(0 0 0 / 10%);
+}
+
+
+#footer .footer-newsletter form input[type="submit"] a:hover{
+   background: black;
+}
+
+#footer .social-links a {
+    font-size: 18px;
+    display: inline-block;
+    background: orange;
+    color: #fff;
+    line-height: 1;
+    padding: 8px 0;
+    margin-right: 4px;
+    border-radius: 50%;
+    text-align: center;
+    width: 36px;
+    height: 36px;
+    transition: 0.3s;
+}
+
+#footer .social-links a:hover {
+    display: inline-block;
+    background: black;
+    color: #fff;
+    transition: 0.3s;
+}
+
+#footer .footer-top .footer-links ul i {
+    padding-right: 2px;
+    color: darkorange;
+    font-size: 18px;
+    line-height: 1;
+} 
+
+li#home{
+    display: inline;
+}
+
+.navbar input[type=text] { {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 14px;
+  font-family:"Poppins", sans-serif;
+}
+@media screen and (max-width: 600px) {
+  .navbarinput[type=text] {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+    font-size: 14px;
+  font-family:"Poppins", sans-serif;
+  }
+ .navbar input[type=text] {
+    border: 1px solid #ccc;
+  }
+}
+
+.navar .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+
+@media screen and (max-width: 600px) {
+  .navbar .search-container {
+    float: none;
+  }
+  .navbar a, .navbar input[type=text], .navbar .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+
+.bx {
+    font-family: 'boxicons'!important;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 160%;
+}
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color: black;
+   text-align: center;
+}
+
+
+</style>
+</head>
+<body>
+
+<!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container">
+      <div class="header-container d-flex align-items-center justify-content-between">
+        <div class="logo">
+          <h1 class="text-light" ><a href="{% url 'index' %}"><span>Bikers'</span></a></h1>
+        </div>
+
+        <nav id="navbar" class="navbar">
+          <ul id="horizontal-list">
+           {% if user.is_authenticated %}<!--otherusers-->
+            <li style="background-color:white;"><a id="home" class="nav-link scrollto active" href="{% url 'index' %}">Home</a></li>
+            <li style="background-color:white;"><a id="aboutus" class="nav-link scrollto" href="{% url 'index' %}">About Us</a></li>
+            <li style="background-color:white;"><a id="aboutus" class="nav-link scrollto " href="{% url 'index' %}">Store</a></li>
+            <li style="background-color:white;"><a id="cart" class="nav-link scrollto" href="{% url 'orderlist' %}">Cart&nbsp;&nbsp; 
+               <div style="color:red;"> {{request.user | cart_item_count}} </div>
+            </a></li>
+            
+            {% if user.is_superuser %} <!--i.e admin-->
+            <li style="background-color:white;"><a id="product" class="nav-link scrollto " href="{% url 'add_product' %}">Add Product</a></li>       
+            {% endif %}
+
+            <li style="background-color:white;"><a id="user" class="nav-link scrollto" href="#hero" style="color:tomato;">Welcome {{user.username}}</a></li>
+            <li style="background-color:white;"><a id="logout" class="getstarted scrollto" href="{% url 'user_logout' %}">Logout</a></li>
+
+            {% else %}
+            <li style="background-color:white;"><a id="login" class="getstarted scrollto" href="{% url 'user_login' %}">Login</a></li>
+            <li style="background-color:white;"><a id="register" class="getstarted scrollto" href="{% url 'user_register' %}">Register</a></li>
+          {% endif %}
+
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <!--end header-->
+
+<section style="padding-top: 100px;">
+  <div class="container">
+   <div class="row">
+    <div class="col-md-12">
+     <h1 class="text-center" style="text-decoration:underline; color:red;">PRIVACY POLICY</h1>
+      <p class="text-center m-b-40">This Privacy Policy governs the manner in which Bikerportal.com collects, uses, maintains and discloses information collected from users (each, a "User") of the website. This privacy policy applies to the Site and all products and services offered by Biker Portal.</p>
+       <div class="hr-title hr-long center" style="color:red;"><abbr><center><b>1. PERSONAL IDENTIFICATION INFORMATION</b></center></abbr></div>
+       <p class="text-justify">We may collect personal identification information from Users in a variety of ways, including, but not limited to, when Users visit our site, register on the site, place an order, and in connection with other activities, services, features or resources we make available on our Site. Users may be asked for, as appropriate, name, email address, mailing address, phone number. Users may, however, visit our Site anonymously. We will collect personal identification information from Users only if they voluntarily submit such information to us. Users can always refuse to supply personally identification information, except that it may prevent them from engaging in certain Site related activities.</p>
+      <div class="hr-title hr-long center" style="color:red;"><abbr><center><b>2. NON-PERSONAL IDENTIFICATION INFORMATION</b></center></abbr></div>
+      <p class="text-justify">We may collect non-personal identification information about Users whenever they interact with our Site. Non-personal identification information may include the browser name, the type of computer and technical information about Users means of connection to our Site, such as the operating system and the Internet service providers' utilized and other similar information.</p>
+      <div class="hr-title hr-long center" style="color:red;"><abbr><center><b>3. WEB BROWSER COOKIES</b></center></abbr></div>
+      <p class="text-justify">Our Site may use "cookies" to enhance User experience. User's web browser places cookies on their hard drive for record-keeping purposes and sometimes to track information about them. User may choose to set their web browser to refuse cookies, or to alert you when cookies are being sent. If they do so, note that some parts of the Site may not function properly.</p>
+      <div class="hr-title hr-long center" style="color:red;"><abbr><center><b>4. HOW WE USE COLLECTED INFORMATION</b></center></abbr></div>
+      <p class="text-justify">IndiaFilings may collect and use Users personal information for the following purposes:
+      <ul class="p-l-25" style="list-style: lower-alpha;">
+        <li>To improve customer service - Information you provide helps us respond to your customer service requests and support needs more efficiently.</li>
+        <li>To personalize user experience - We may use information in the aggregate to understand how our Users as a group use the services and resources provided on our Site.</li>
+        <li>To improve our Site - We may use feedback you provide to improve our products and services.</li>
+        <li>To process payments - We may use the information Users provide about themselves when placing an order only to provide service to that order. We do not share this information with outside parties except to the extent necessary to provide the service.</li>
+    </ul>
+    </p>
+    <div class="hr-title hr-long center" style="color:red;"><abbr><center><b>5. HOW WE PROTECT YOUR INFORMATION</b></center></abbr></div>
+    <p class="text-justify">We adopt appropriate data collection, storage and processing practices and security measures to protect against unauthorized access, alteration, disclosure or destruction of your personal information, username, password, transaction information and data stored on our Site.</p>
+    <div class="hr-title hr-long center" style="color:red;"><abbr><center><b>6. COMPLIANCE WITH CHILDREN'S ONLINE PRIVACY PROTECTION ACT</b></center></abbr></div>
+    <p class="text-justify">Protecting the privacy of the very young is especially important. For that reason, we never collect or maintain information at our Site from those we actually know are under 13, and no part of our website is structured to attract anyone under 13.</p>
+    <div class="hr-title hr-long center" style="color:red;"><abbr><center><b>7. CHANGES TO THIS PRIVACY POLICY</b></center></abbr></div>
+    <p class="text-justify">IndiaFilings.com have the discretion to update this privacy policy at any time. We encourage Users to frequently check this page for any changes to stay informed about how we are helping to protect the personal information we collect. You acknowledge and agree that it is your responsibility to review this privacy policy periodically and become aware of modifications.</p>
+    <div class="hr-title hr-long center" style="color:red;"><abbr><center><b><abbr>8. CONTACT US</b></center></abbr></div>
+    <p class="text-justify">If you have any questions about this Privacy Policy, the practices of this site, or your dealings with this site, please contact us at:<br>
+    BIKERPORTAL Services Private Limited<br>
+    A108, Adam Street,Maharashtra 401107, India.<br>
+    Phone : 222333110
+    </p>
+    <br>
+    <p><strong>Helpline No./Email:</strong></p>
+    <p><strong>Phone: 222333110 / Email: info@gmail.com </strong></p>
+    
+    </div>
+  </div>
+ </div>
+</section>
+ 
+
+<!-- Vendor JS Files -->
+  <script src="{% static 'vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'vendor/purecounter/purecounter.js' %}"></script>
+  <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+
+
+<!--footer-->
+<footer>
+ <center>
+   <div class="footer"> Any Doubt? Contact us on: 2223331110
+   <br>
+        <div class="copyright">
+          &copy; Copyright <strong><span>2021</span></strong> || All Rights Reserved
+        </div>
+    </div>
+  </center>
+</footer>
+<!--end footer-->
+
+</body>
+</html>
